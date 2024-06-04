@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "lp3imobileApps",
-    "slug": "lp3imobileApps",
+    "name": "lp3iMobileApps",
+    "slug": "lp3iMobileApps",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -25,12 +25,6 @@
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
     }
   }
 }
