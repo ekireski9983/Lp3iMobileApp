@@ -5,12 +5,13 @@ import {
     ScrollView,
     Alert
 } from "react-native";  
+
 import { 
     CustomeInput,
     FbButton
 } from '../../components'
 import { useSelector, useDispatch } from 'react-redux'
-import { setBirthDate} from '../../store/reducer/registerReducer'
+import { setBirthDate } from '../../store/reducer/registerReducer'
 
 export default function RegisterInputDateScreen({navigation}){
     const register = useSelector((state) => state.register.formInput)
@@ -23,6 +24,7 @@ export default function RegisterInputDateScreen({navigation}){
                 throw Error('Birth date is required')
             }
 
+
             navigation.navigate("RegisterGender")
         }catch(err){
             Alert.alert('Error', err.message, [
@@ -31,20 +33,19 @@ export default function RegisterInputDateScreen({navigation}){
               }},
             ]);
         }
-        
 
     }
 
     return(
         <ScrollView style={styles.container}>
             <Text style={styles.textHeader}>What's your date of birth?</Text>
-            <Text>choose your date of birth, you can always make this private later. why do I need to provide my date of brith</Text>
+            <Text>Choose your date of birth. You can always make this private later. Why do I need to provide my date of birth?</Text>
             
             <View style={styles.containerInput}>
                 <CustomeInput 
                     value={register.birthDate}
                     onChangeText={(value)=>dispatch(setBirthDate(value))}
-                    label="date of birth"/>
+                    label="Date of birth"/>
                 
             </View>
 

@@ -44,7 +44,7 @@ export default function LoginScreen({navigation}){
       )
       setLoading(false)
       if(res.data.document != null){
-        navigation.replace("Home")
+        navigation.replace("Main")
       }else{
         Alert.alert('Error', "Username & password tidak sesuai", [
           {text: 'OK', onPress: () => {
