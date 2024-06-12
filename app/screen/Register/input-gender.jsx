@@ -24,6 +24,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
 );
 
 
+
 export default function RegisterInputGenderScreen({navigation}){
     const dispatch = useDispatch()
     const optList = useSelector((state) => state.register.optGender)
@@ -71,9 +72,12 @@ export default function RegisterInputGenderScreen({navigation}){
                     renderItem={renderItem}
                     keyExtractor={item => item.value}
                     extraData={register.gender}/>
+                    
             </View>
-
-            <FbButton title="Next" onPress={onNextInput}/>
+            
+            <FbButton 
+                style={styles.nextButton} 
+                title="Next" onPress={onNextInput}/>
             
         </SafeAreaView>
     )
@@ -99,4 +103,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 14,
     },
+    nextButton:{
+        flexDirection:'row',
+    }
   });

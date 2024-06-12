@@ -34,6 +34,16 @@ export const registerSlice = createSlice({
     },
     setBirthDate:(state, action) => {
         state.formInput.birthDate = action.payload
+    },
+    resetRegisterData:(state) =>{
+        state.formInput = {
+            firstName: null,
+            sureName: null,
+            gender: null,
+            email: null,
+            password: null,
+            birthDate: null
+        }
     }
   },
 })
@@ -45,7 +55,8 @@ export const {
     setGender,
     setEmail,
     setPassword,
-    setBirthDate
+    setBirthDate,
+    resetRegisterData
  } = registerSlice.actions
 
 export default registerSlice.reducer

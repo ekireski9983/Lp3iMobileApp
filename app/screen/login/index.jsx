@@ -3,7 +3,6 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  Button,
   ImageBackground,
   Dimensions,
   Image,
@@ -14,15 +13,16 @@ import {
 import { MyButton, FbButton } from '../../components' 
 import { ICFacebook, ICGoogle } from '../../../assets'       
 import React from 'react'
-
+import ApiLib from "../../lib/ApiLib"
 
 const windowWidth = Dimensions.get('window').width;
 
 export default function LoginScreen({navigation}){
   const [email, onChangeEmail] = React.useState('')
   const [pasword, onChangePassword] = React.useState('')
-
-  const onSubmitLogin =()=>{
+  const [loading, setLoading] = React.useState(false)
+  const onSubmitLogin =async ()=>{
+    setLoading(true)
     try{
       if(email.trim().length === 0 ){
         throw Error('Email is required')
@@ -32,8 +32,30 @@ export default function LoginScreen({navigation}){
         throw Error('Password is required')
       }
 
-      navigation.replace("Home")
+      const res =  await ApiLib.post('/action/findOne',{
+              "dataSource": "AtlasCluster",
+              "database": "ekireski",
+              "collection": "ekireski",
+              "filter": {
+                "email": email,
+                "password": pasword
+              }
+          }
+      )
+      setLoading(false)
+      if(res.data.document != null){
+        navigation.replace("Home")
+      }else{
+        Alert.alert('Error', "Username & password tidak sesuai", [
+          {text: 'OK', onPress: () => {
+            console.log('ERR')
+          }},
+        ]);
+      }
+      
+
     }catch(err){
+      setLoading(false)
       Alert.alert('Error', err.message, [
         {text: 'OK', onPress: () => {
           console.log('ERR')
@@ -83,6 +105,7 @@ export default function LoginScreen({navigation}){
             value={pasword}/>
 
           <FbButton
+            loading={loading}
             onPress={onSubmitLogin}
             title="Login"/>
 

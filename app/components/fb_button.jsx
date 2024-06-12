@@ -6,10 +6,10 @@ import {
 } from 'react-native'
 
 
-export const FbButton=({title, onPress})=>{
+export const FbButton=({title, onPress, style})=>{
 
     return(
-        <TouchableOpacity  onPress={onPress}>
+        <TouchableOpacity style={style} onPress={onPress}>
             <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} 
                 style={styles.linearGradient}>
                 <Text style={styles.buttonText}>
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     },
     buttonText: {
       fontSize: 18,
-      fontFamily: 'Gill Sans',
       textAlign: 'center',
       margin: 10,
       color: '#ffffff',
