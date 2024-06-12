@@ -16,11 +16,41 @@ import { Provider } from 'react-redux'
 
 const Stack = createNativeStackNavigator();
 
+function MainScreen() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{ tabBarActiveTintColor: '#e91e63' }}>
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} />
+            ),
+          }} 
+        />
+
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarLabel: 'Profile',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="account" color={color} size={size} />
+            ),
+          }}
+        />
+    </Tab.Navigator>
+  )
+}
+
 function App() {
   return (
     <Provider store={store}>
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Splash" 
           options={{headerShown:false}}
