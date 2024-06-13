@@ -2,19 +2,32 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { 
     TouchableOpacity,
     Text,
-    StyleSheet
+    StyleSheet,
+    ActivityIndicator,
+    View
 } from 'react-native'
 
+const ContentItem = ({loading, title})=>{
+    if(loading){
+        return(
+            <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+                <ActivityIndicator size='small' color="white" />
+                <Text style={styles.buttonText}> Loading...</Text>
+            </View>
+        )
+    }
 
-export const FbButton=({title, onPress, style})=>{
+    if(!loading){
+        return(<Text style={styles.buttonText}> {title} </Text>)
+    }
+}
 
+export const FbButton=({loading, title, onPress, style})=>{
     return(
-        <TouchableOpacity style={style} onPress={onPress}>
+        <TouchableOpacity disabled={loading} style={style} onPress={onPress}>
             <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} 
                 style={styles.linearGradient}>
-                <Text style={styles.buttonText}>
-                    {title}
-                </Text>
+                    <ContentItem loading={loading} title={title} />
             </LinearGradient>
         </TouchableOpacity>
     );

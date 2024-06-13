@@ -54,7 +54,7 @@ function App() {
   return (
     <Provider store={store}> 
       <NavigationContainer independent={true}>
-        <Stack.Navigator initialRouteName="Splash">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Main" component={MainScreen} options={{headerShown:false}} />
           <Stack.Screen name="Splash" options={{headerShown:false}} component={SplashScreen} />
           <Stack.Screen name="Login" options={{headerShown:false}} component={LoginScreen} />
