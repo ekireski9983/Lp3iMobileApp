@@ -18,8 +18,8 @@ export default function HomeScreen(){
   const fetchData = async ()=>{
     try{
       const res = await ApiLib.post('/action/find',{
-        "dataSource": "Cluster0",
-        "database": "app-lp3i-mobile",
+        "dataSource": "AtlasClusters",
+        "database": "lp3imobileapps",
         "collection": "users",
         "filter": filter
       })

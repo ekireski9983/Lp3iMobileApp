@@ -37,8 +37,8 @@ export default function LoginScreen({navigation}){
       }
 
       const res =  await ApiLib.post('/action/findOne',{
-              "dataSource": "Cluster0",
-              "database": "app-lp3i-mobile",
+              "dataSource": "AtlasClusters",
+              "database": "lp3imobileapps",
               "collection": "users",
               "filter": {
                 "email": email,
