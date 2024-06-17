@@ -18,9 +18,9 @@ export default function HomeScreen(){
   const fetchData = async ()=>{
     try{
       const res = await ApiLib.post('/action/find',{
-        "dataSource": "AtlasCluster",
-        "database": "ekireski",
-        "collection": "ekireski",
+        "dataSource": "Cluster0",
+        "database": "app-lp3i-mobile",
+        "collection": "users",
         "filter": filter
       })
 

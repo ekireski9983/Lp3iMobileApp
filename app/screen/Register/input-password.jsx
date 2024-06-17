@@ -48,9 +48,9 @@ export default function RegisterInputPasswordScreen({navigation}){
                     text: 'Submit', onPress: async () => {
                        const res =  await ApiLib.post('/action/insertOne',
                             {
-                                "dataSource": "AtlasCluster",
-                                "database": "ekireski",
-                                "collection": "ekireski",
+                                "dataSource": "Cluster0",
+                                "database": "app-lp3i-mobile",
+                                "collection": "users",
                                 "document": register
                             }
                         )
